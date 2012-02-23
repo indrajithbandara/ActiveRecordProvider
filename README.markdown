@@ -1,7 +1,7 @@
-PHP-ActiveRecord Extension
+PHP-ActiveRecord Provider
 ==========================
 
-PHP-ActiveRecord Extension provieds easy integration with [PHP-ActiveRecord](https://github.com/kla/php-activerecord) for easy database access.
+PHP-ActiveRecord Provider provides easy integration with [PHP-ActiveRecord](https://github.com/kla/php-activerecord) for easy database access.
 
 Parameters
 ----------
@@ -14,24 +14,12 @@ Parameters
     * `oci://username:passsword@localhost/xe`
 * *ar.default_connection* - default models connection.
 
-Installation
------------- 
-    cd /path/to/your/project
-    cd vendor
-    git clone https://github.com/kla/php-activerecord.git
-    cd ..
-    cd Extensions
-    git clone https://RafalFilipek@github.com/RafalFilipek/ActiveRecordExtension.git
-    cd ..
-    mkdir Models
-
 Registering
 -----------
-    use Extensions\ActiveRecordExtension\ActiveRecordExtension;
+    use ActiveRecordProvider\Silex\Provider\ActiveRecordProvider;
 
-    $app['autoloader']->registerNamespace('Extensions', __DIR__);
     $app['autoloader']->registerNamespace('Models', __DIR__);
-    $app->register(new ActiveRecordExtension(),
+    $app->register(new ActiveRecordProvider(),
     	array(
     		'ar.lib_path'	=> __DIR__.'/vendor/php-activerecord',
     		'ar.default_connection' => 'development',
